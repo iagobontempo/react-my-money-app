@@ -11,3 +11,5 @@ server.use(bodyParser.json())
 server.listen(port, function () {
     console.log(`BACKEND RUNNING ON PORT ${port}`)
 })
+
+module.exports = server // Para poder ser chamado pelas rotas dentro de loader.js
