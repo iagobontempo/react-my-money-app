@@ -18,4 +18,26 @@ BillingCycle.route('count', (req, res, next) => {
     })
 })
 
+// Pipeline para agregação - manipulação de dados em json
+
+// Ao fazer: 
+// $group: {_id: YEAR, credit: {$sum: "$credit"}, debt: {$sum: "$debt"}}
+// Ele faria o resultado de credito e debito agrupados por YEAR
+
+BillingCycle.route('summary', (req, res, next) => {
+    BillingCycle.aggregate([{ // Criou duas novas variaveis, credit e debt (objeto novo)
+        $project: {credit: {$sum: "$credits.value"}, debt: {$sum: "$debts.value"}} //O que sera extraido do billingCycles, "nome do atributo.value"
+    }, { // Na linha abaixo, está criando um novo objeto que agrupa todos os objetos tirados acima. OBS: "$credit" referencia o credit criado com $project na linha acima
+        $group: {_id: null, credit: {$sum: "$credit"}, debt: {$sum: "$debt"}}
+    }, { // Na linha abaixo, esta setando false para id e true para credit e debt, para aparecer
+        $project: {_id: 0, credit: 1, debt: 1}
+    }], (error, result) => {
+        if(error) {
+            res.status(500).json({errors: [error]})
+        } else {
+            res.json(result[0] || {credit: 0, debt: 0})
+        }
+    })
+})
+
 module.exports = BillingCycle
