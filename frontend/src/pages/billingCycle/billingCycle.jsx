@@ -9,7 +9,10 @@ import TabsHeader from '../../common/tab/tabsHeader'
 import TabsContent from '../../common/tab/tabsContent'
 import TabHeader from '../../common/tab/tabHeader'
 import TabContent from '../../common/tab/tabContent'
+
 import BillingCycleList from '../../pages/billingCycle/billingCycleList'
+import BillingCycleForm from '../../pages/billingCycle/billingCycleForm'
+
 
 import { selectTab, showTabs } from '../../common/tab/tabActions'
 
@@ -19,7 +22,7 @@ class BillingCycle extends Component {
     componentDidMount() {
         this.props.selectTab('tabList') // Selecionando tabList como aba da tabela renderizada ao abrir a page // this.props.selectTab('tabUpdate') abriria a aba update
         this.props.showTabs('tabList', 'tabCreate')
-    }                                    
+    }
 
     render() {
         return (
@@ -35,9 +38,11 @@ class BillingCycle extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id="tabList">
-                                 <BillingCycleList />
+                                <BillingCycleList />
                             </TabContent>
-                            <TabContent id="tabCreate"><h1>Create</h1></TabContent>
+                            <TabContent id="tabCreate">
+                                <BillingCycleForm />
+                            </TabContent>
                             <TabContent id="tabUpdate"><h1>Update</h1></TabContent>
                             <TabContent id="tabDelete"><h1>Delete</h1></TabContent>
                         </TabsContent>
