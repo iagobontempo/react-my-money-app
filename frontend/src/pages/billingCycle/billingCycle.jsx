@@ -10,14 +10,15 @@ import TabsContent from '../../common/tab/tabsContent'
 import TabHeader from '../../common/tab/tabHeader'
 import TabContent from '../../common/tab/tabContent'
 
-import { selectTab } from '../../common/tab/tabActions'
+import { selectTab, showTabs } from '../../common/tab/tabActions'
 
 
 class BillingCycle extends Component {
 
     componentDidMount() {
-        this.props.selectTab('tabList') // Selecionando tabList como aba da tabela renderizada ao abrir a page
-    }                                   // this.props.selectTab('tabUpdate') abriria a aba update 
+        this.props.selectTab('tabList') // Selecionando tabList como aba da tabela renderizada ao abrir a page // this.props.selectTab('tabUpdate') abriria a aba update
+        this.props.showTabs('tabList', 'tabCreate')
+    }                                    
 
     render() {
         return (
@@ -45,5 +46,5 @@ class BillingCycle extends Component {
 }
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ selectTab }, dispatch);
+    bindActionCreators({ selectTab, showTabs }, dispatch);
 export default connect(null, mapDispatchToProps)(BillingCycle)
