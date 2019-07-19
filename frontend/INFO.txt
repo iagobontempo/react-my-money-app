@@ -1,0 +1,1 @@
+A PARTIR DA AULA 157 , React com Redux é onde usarei para renderizar um POST.
