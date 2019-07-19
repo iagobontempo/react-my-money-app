@@ -14,14 +14,12 @@ import BillingCycleList from '../../pages/billingCycle/billingCycleList'
 import BillingCycleForm from '../../pages/billingCycle/billingCycleForm'
 
 
-import { selectTab, showTabs } from '../../common/tab/tabActions'
-import { create, update, remove } from './billingCycleActions'
+import { init, create, update, remove } from './billingCycleActions'
 
 class BillingCycle extends Component {
 
     componentDidMount() {
-        this.props.selectTab('tabList') // Selecionando tabList como aba da tabela renderizada ao abrir a page // this.props.selectTab('tabUpdate') abriria a aba update
-        this.props.showTabs('tabList', 'tabCreate')
+        this.props.init()
     }
 
     render() {
@@ -61,5 +59,5 @@ class BillingCycle extends Component {
 }
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch);
+    bindActionCreators({ init, create, update, remove }, dispatch);
 export default connect(null, mapDispatchToProps)(BillingCycle)
