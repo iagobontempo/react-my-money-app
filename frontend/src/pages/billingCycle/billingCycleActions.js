@@ -33,7 +33,7 @@ export function create(values) {
     }
 }
 
-export function showUpdate(billingCycles) {
+export function showUpdate(billingCycle) {
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
