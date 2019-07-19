@@ -26,4 +26,4 @@ class BillingCycleForm extends Component {
 }
 
 // conectando o redux form e criando um id para o formulario em "{form: 'billingCycleForm'}"
-export default reduxForm({ form: 'billingCycleForm' })(BillingCycleForm)
+export default reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm)

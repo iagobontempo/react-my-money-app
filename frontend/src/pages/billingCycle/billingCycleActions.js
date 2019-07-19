@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { toastr } from 'react-redux-toastr' //Importou para pegar os metodos que ele já possui (ex: success)
-import { reset as resetForm } from 'redux-form'
+import { reset as resetForm, initialize } from 'redux-form'
 import { selectTab, showTabs } from '../../common/tab/tabActions'
-import billingCycleForm from './billingCycleForm';
+import billingCycle from './billingCycle';
 
 const BASE_URL = 'http://localhost:3003/api'
 
@@ -36,6 +36,7 @@ export function create(values) {
 export function showUpdate(billingCycles) {
     return [
         showTabs('tabUpdate'),
-        selectTab('tabUpdate')
+        selectTab('tabUpdate'),
+        initialize('billingCycleForm', billingCycle) //'billingCycleForm é o ID do formulario
     ]
 }
